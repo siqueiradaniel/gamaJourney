@@ -1,0 +1,61 @@
+entity Student {
+	id String
+	name String
+}
+
+entity Exam {
+	id String
+	name String
+    description String
+}
+
+entity Content {
+	id String
+	name String
+    description String
+}
+
+entity Subcontent {
+	id String
+	name String
+    description String
+}
+
+entity LearningPath {
+	examId String
+    subcontentId String
+    order Integer
+     // Status atual do caminho de aprendizagem (ex: 'IN_PROGRESS', 'COMPLETED')
+}
+
+entity Dependency {
+	firstSubcontentId String
+    secondSubcontentId String
+}
+
+entity PendingStudentSubcontent {
+	studentId String
+    subcontentId String
+    currentStatus String required
+}
+
+relationship OneToMany {
+	Exam to Student
+    Exam to LearningPath
+    Subcontent to LearningPath
+    Content to Subcontent
+    Subcontent to Dependency
+    Subcontent to Dependency
+    Subcontent to PendingStudentSubcontent
+    Student to PendingStudentSubcontent
+}
+
+// Service Layer Configuration
+service all with serviceImpl except Exam, Content
+
+// Data Transfer Objects (DTOs)
+dto * with mapstruct
+
+// Pagination & Infinite-Scroll
+paginate Student, Exam, Content, Subcontent with pagination
+paginate PendingStudentSubcontent with infinite-scroll
