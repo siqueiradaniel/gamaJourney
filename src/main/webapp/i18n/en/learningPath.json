@@ -1,0 +1,28 @@
+{
+  "gamaJourneyApp": {
+    "learningPath": {
+      "home": {
+        "title": "Learning Paths",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Learning Path",
+        "createOrEditLabel": "Create or edit a Learning Path",
+        "notFound": "No Learning Paths found"
+      },
+      "created": "A new Learning Path is created with identifier {{ param }}",
+      "updated": "A Learning Path is updated with identifier {{ param }}",
+      "deleted": "A Learning Path is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Learning Path {{ id }}?"
+      },
+      "detail": {
+        "title": "Learning Path"
+      },
+      "id": "ID",
+      "examId": "Exam Id",
+      "subcontentId": "Subcontent Id",
+      "order": "Order",
+      "exam": "Exam",
+      "subcontent": "Subcontent"
+    }
+  }
+}

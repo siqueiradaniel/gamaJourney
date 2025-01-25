@@ -1,0 +1,126 @@
+<div>
+  <h2 id="page-heading" data-cy="LearningPathHeading">
+    <span jhiTranslate="gamaJourneyApp.learningPath.home.title">Learning Paths</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="gamaJourneyApp.learningPath.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-learning-path"
+        [routerLink]="['/learning-path/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gamaJourneyApp.learningPath.home.createLabel">Create a new Learning Path</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (learningPaths().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gamaJourneyApp.learningPath.home.notFound">No Learning Paths found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="examId">
+              <div class="d-flex">
+                <span jhiTranslate="gamaJourneyApp.learningPath.examId">Exam Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="subcontentId">
+              <div class="d-flex">
+                <span jhiTranslate="gamaJourneyApp.learningPath.subcontentId">Subcontent Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="order">
+              <div class="d-flex">
+                <span jhiTranslate="gamaJourneyApp.learningPath.order">Order</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="exam.id">
+              <div class="d-flex">
+                <span jhiTranslate="gamaJourneyApp.learningPath.exam">Exam</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="subcontent.id">
+              <div class="d-flex">
+                <span jhiTranslate="gamaJourneyApp.learningPath.subcontent">Subcontent</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (learningPath of learningPaths(); track trackId(learningPath)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/learning-path', learningPath.id, 'view']">{{ learningPath.id }}</a>
+              </td>
+              <td>{{ learningPath.examId }}</td>
+              <td>{{ learningPath.subcontentId }}</td>
+              <td>{{ learningPath.order }}</td>
+              <td>
+                @if (learningPath.exam) {
+                  <div>
+                    <a [routerLink]="['/exam', learningPath.exam.id, 'view']">{{ learningPath.exam.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (learningPath.subcontent) {
+                  <div>
+                    <a [routerLink]="['/subcontent', learningPath.subcontent.id, 'view']">{{ learningPath.subcontent.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/learning-path', learningPath.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/learning-path', learningPath.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(learningPath)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

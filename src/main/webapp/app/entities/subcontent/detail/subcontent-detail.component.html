@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (subcontent(); as subcontentRef) {
+      <div>
+        <h2 data-cy="subcontentDetailsHeading"><span jhiTranslate="gamaJourneyApp.subcontent.detail.title">Subcontent</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="gamaJourneyApp.subcontent.id">Id</span></dt>
+          <dd>
+            <span>{{ subcontentRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.subcontent.name">Name</span></dt>
+          <dd>
+            <span>{{ subcontentRef.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.subcontent.description">Description</span></dt>
+          <dd>
+            <span>{{ subcontentRef.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.subcontent.content">Content</span></dt>
+          <dd>
+            @if (subcontent()!.content) {
+              <div>
+                <a [routerLink]="['/content', subcontent()!.content?.id, 'view']">{{ subcontentRef.content?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/subcontent', subcontentRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

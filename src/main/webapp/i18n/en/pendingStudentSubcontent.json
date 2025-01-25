@@ -1,0 +1,28 @@
+{
+  "gamaJourneyApp": {
+    "pendingStudentSubcontent": {
+      "home": {
+        "title": "Pending Student Subcontents",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Pending Student Subcontent",
+        "createOrEditLabel": "Create or edit a Pending Student Subcontent",
+        "notFound": "No Pending Student Subcontents found"
+      },
+      "created": "A new Pending Student Subcontent is created with identifier {{ param }}",
+      "updated": "A Pending Student Subcontent is updated with identifier {{ param }}",
+      "deleted": "A Pending Student Subcontent is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Pending Student Subcontent {{ id }}?"
+      },
+      "detail": {
+        "title": "Pending Student Subcontent"
+      },
+      "id": "ID",
+      "studentId": "Student Id",
+      "subcontentId": "Subcontent Id",
+      "currentStatus": "Current Status",
+      "subcontent": "Subcontent",
+      "student": "Student"
+    }
+  }
+}

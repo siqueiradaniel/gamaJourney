@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (content(); as contentRef) {
+      <div>
+        <h2 data-cy="contentDetailsHeading"><span jhiTranslate="gamaJourneyApp.content.detail.title">Content</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="gamaJourneyApp.content.id">Id</span></dt>
+          <dd>
+            <span>{{ contentRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.content.name">Name</span></dt>
+          <dd>
+            <span>{{ contentRef.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.content.description">Description</span></dt>
+          <dd>
+            <span>{{ contentRef.description }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/content', contentRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

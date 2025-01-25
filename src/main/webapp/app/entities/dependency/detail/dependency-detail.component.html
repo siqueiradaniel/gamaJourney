@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (dependency(); as dependencyRef) {
+      <div>
+        <h2 data-cy="dependencyDetailsHeading"><span jhiTranslate="gamaJourneyApp.dependency.detail.title">Dependency</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ dependencyRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.dependency.firstSubcontentId">First Subcontent Id</span></dt>
+          <dd>
+            <span>{{ dependencyRef.firstSubcontentId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.dependency.secondSubcontentId">Second Subcontent Id</span></dt>
+          <dd>
+            <span>{{ dependencyRef.secondSubcontentId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.dependency.subcontent">Subcontent</span></dt>
+          <dd>
+            @if (dependency()!.subcontent) {
+              <div>
+                <a [routerLink]="['/subcontent', dependency()!.subcontent?.id, 'view']">{{ dependencyRef.subcontent?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/dependency', dependencyRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
