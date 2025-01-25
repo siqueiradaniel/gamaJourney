@@ -1,0 +1,41 @@
+{
+  "annotations": {
+    "changelogDate": "20250125135354"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Exam",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "student",
+      "otherEntityRelationshipName": "exam",
+      "relationshipName": "student",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "learningPath",
+      "otherEntityRelationshipName": "exam",
+      "relationshipName": "learningPath",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

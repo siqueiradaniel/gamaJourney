@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20250125135357"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "examId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "subcontentId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "order",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "LearningPath",
+  "relationships": [
+    {
+      "otherEntityName": "exam",
+      "otherEntityRelationshipName": "learningPath",
+      "relationshipName": "exam",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "subcontent",
+      "otherEntityRelationshipName": "learningPath",
+      "relationshipName": "subcontent",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

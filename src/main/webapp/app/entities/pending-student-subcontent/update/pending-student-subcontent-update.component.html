@@ -1,0 +1,119 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-pending-student-subcontent-heading"
+        data-cy="PendingStudentSubcontentCreateUpdateHeading"
+        jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.home.createOrEditLabel"
+      >
+        Create or edit a Pending Student Subcontent
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_studentId" jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.studentId"
+            >Student Id</label
+          >
+          <input type="text" class="form-control" name="studentId" id="field_studentId" data-cy="studentId" formControlName="studentId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_subcontentId" jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.subcontentId"
+            >Subcontent Id</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="subcontentId"
+            id="field_subcontentId"
+            data-cy="subcontentId"
+            formControlName="subcontentId"
+          />
+        </div>
+
+        @let currentStatusRef = editForm.get('currentStatus')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_currentStatus" jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.currentStatus"
+            >Current Status</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="currentStatus"
+            id="field_currentStatus"
+            data-cy="currentStatus"
+            formControlName="currentStatus"
+          />
+          @if (currentStatusRef.invalid && (currentStatusRef.dirty || currentStatusRef.touched)) {
+            <div>
+              @if (editForm.get('currentStatus')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_subcontent" jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.subcontent"
+            >Subcontent</label
+          >
+          <select
+            class="form-control"
+            id="field_subcontent"
+            data-cy="subcontent"
+            name="subcontent"
+            formControlName="subcontent"
+            [compareWith]="compareSubcontent"
+          >
+            <option [ngValue]="null"></option>
+            @for (subcontentOption of subcontentsSharedCollection; track $index) {
+              <option [ngValue]="subcontentOption">{{ subcontentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_student" jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.student">Student</label>
+          <select
+            class="form-control"
+            id="field_student"
+            data-cy="student"
+            name="student"
+            formControlName="student"
+            [compareWith]="compareStudent"
+          >
+            <option [ngValue]="null"></option>
+            @for (studentOption of studentsSharedCollection; track $index) {
+              <option [ngValue]="studentOption">{{ studentOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

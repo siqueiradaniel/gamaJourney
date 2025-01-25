@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (pendingStudentSubcontent(); as pendingStudentSubcontentRef) {
+      <div>
+        <h2 data-cy="pendingStudentSubcontentDetailsHeading">
+          <span jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.detail.title">Pending Student Subcontent</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ pendingStudentSubcontentRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.studentId">Student Id</span></dt>
+          <dd>
+            <span>{{ pendingStudentSubcontentRef.studentId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.subcontentId">Subcontent Id</span></dt>
+          <dd>
+            <span>{{ pendingStudentSubcontentRef.subcontentId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.currentStatus">Current Status</span></dt>
+          <dd>
+            <span>{{ pendingStudentSubcontentRef.currentStatus }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.subcontent">Subcontent</span></dt>
+          <dd>
+            @if (pendingStudentSubcontent()!.subcontent) {
+              <div>
+                <a [routerLink]="['/subcontent', pendingStudentSubcontent()!.subcontent?.id, 'view']">{{
+                  pendingStudentSubcontentRef.subcontent?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.pendingStudentSubcontent.student">Student</span></dt>
+          <dd>
+            @if (pendingStudentSubcontent()!.student) {
+              <div>
+                <a [routerLink]="['/student', pendingStudentSubcontent()!.student?.id, 'view']">{{
+                  pendingStudentSubcontentRef.student?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="['/pending-student-subcontent', pendingStudentSubcontentRef.id, 'edit']"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

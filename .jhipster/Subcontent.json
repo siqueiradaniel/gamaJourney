@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20250125135356"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Subcontent",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "learningPath",
+      "otherEntityRelationshipName": "subcontent",
+      "relationshipName": "learningPath",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "dependency",
+      "otherEntityRelationshipName": "subcontent",
+      "relationshipName": "dependency",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "pendingStudentSubcontent",
+      "otherEntityRelationshipName": "subcontent",
+      "relationshipName": "pendingStudentSubcontent",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "content",
+      "otherEntityRelationshipName": "subcontent",
+      "relationshipName": "content",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,29 @@
+{
+  "gamaJourneyApp": {
+    "subcontent": {
+      "home": {
+        "title": "Subcontents",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Subcontent",
+        "createOrEditLabel": "Create or edit a Subcontent",
+        "notFound": "No Subcontents found"
+      },
+      "created": "A new Subcontent is created with identifier {{ param }}",
+      "updated": "A Subcontent is updated with identifier {{ param }}",
+      "deleted": "A Subcontent is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Subcontent {{ id }}?"
+      },
+      "detail": {
+        "title": "Subcontent"
+      },
+      "id": "Id",
+      "name": "Name",
+      "description": "Description",
+      "learningPath": "Learning Path",
+      "dependency": "Dependency",
+      "pendingStudentSubcontent": "Pending Student Subcontent",
+      "content": "Content"
+    }
+  }
+}

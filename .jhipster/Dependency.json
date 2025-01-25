@@ -1,0 +1,29 @@
+{
+  "annotations": {
+    "changelogDate": "20250125135358"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "firstSubcontentId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "secondSubcontentId",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Dependency",
+  "relationships": [
+    {
+      "otherEntityName": "subcontent",
+      "otherEntityRelationshipName": "dependency",
+      "relationshipName": "subcontent",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

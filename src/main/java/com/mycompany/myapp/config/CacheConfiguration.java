@@ -50,6 +50,20 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.domain.User.class.getName());
             createCache(cm, com.mycompany.myapp.domain.Authority.class.getName());
             createCache(cm, com.mycompany.myapp.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.mycompany.myapp.domain.Student.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Student.class.getName() + ".pendingStudentSubcontents");
+            createCache(cm, com.mycompany.myapp.domain.Exam.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Exam.class.getName() + ".students");
+            createCache(cm, com.mycompany.myapp.domain.Exam.class.getName() + ".learningPaths");
+            createCache(cm, com.mycompany.myapp.domain.Content.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Content.class.getName() + ".subcontents");
+            createCache(cm, com.mycompany.myapp.domain.Subcontent.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Subcontent.class.getName() + ".learningPaths");
+            createCache(cm, com.mycompany.myapp.domain.Subcontent.class.getName() + ".dependencies");
+            createCache(cm, com.mycompany.myapp.domain.Subcontent.class.getName() + ".pendingStudentSubcontents");
+            createCache(cm, com.mycompany.myapp.domain.LearningPath.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Dependency.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PendingStudentSubcontent.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

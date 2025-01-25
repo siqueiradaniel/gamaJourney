@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (exam(); as examRef) {
+      <div>
+        <h2 data-cy="examDetailsHeading"><span jhiTranslate="gamaJourneyApp.exam.detail.title">Exam</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="gamaJourneyApp.exam.id">Id</span></dt>
+          <dd>
+            <span>{{ examRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.exam.name">Name</span></dt>
+          <dd>
+            <span>{{ examRef.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="gamaJourneyApp.exam.description">Description</span></dt>
+          <dd>
+            <span>{{ examRef.description }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/exam', examRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
